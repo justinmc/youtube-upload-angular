@@ -9,17 +9,20 @@ angular.module('youtubeUpload', []).directive('youtubeUpload', function() {
         templateUrl: '../dist/youtube_upload.html',
         replace: true,
         scope: {
+            onUploadSuccess: '@',
+            onProcessingComplete: '@'
         },
 
         link: function($scope, $element, $attrs) {
 
-            // scope data
-            $scope.state = {
-            };
-
             var youtube = {
                 widget: null,
                 player: null
+            };
+
+            var callbacks = {
+                onUploadSuccess: onUploadSuccess,
+                onProcessingComplete: onProcessingComplete
             };
 
             initialize();
@@ -43,6 +46,17 @@ angular.module('youtubeUpload', []).directive('youtubeUpload', function() {
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
             function createEventHandlers() {
 
+                // set the callbacks if passed in
+                $scope.$watch('onUploadSuccess', function(newValue, oldValue) {
+                    if (typeof newValue === 'function') {
+                        callbacks.onUploadSuccess = newValue;
+                    }
+                });
+                $scope.$watch('onProcessingComplete', function(newValue, oldValue) {
+                    if (typeof newValue === 'function') {
+                        callbacks.onProcessingComplete = newValue;
+                    }
+                });
             }
 
             /* loadUploadWidget - create function 
@@ -71,8 +85,8 @@ angular.module('youtubeUpload', []).directive('youtubeUpload', function() {
                 youtube.widget = new window.YT.UploadWidget('widget', {
                     width: 500,
                     events: {
-                        'onUploadSuccess': onUploadSuccess,
-                        'onProcessingComplete': onProcessingComplete
+                        'onUploadSuccess': callbacks.onUploadSuccess,
+                        'onProcessingComplete': callbacks.onProcessingComplete
                     }
                 });
             }
@@ -86,11 +100,13 @@ angular.module('youtubeUpload', []).directive('youtubeUpload', function() {
             /* onProcessingComplete - 5. This function is called when a video has been successfully processed.
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
             function onProcessingComplete(event) {
-                $scope.$emit('video-loader:video-change', event.data.videoId);
+                player = new YT.Player('player', {
+                    height: 390,
+                    width: 640,
+                    videoId: event.data.videoId,
+                    events: {}
+                });
             }
-
-            /* Scope Methods
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
         }
     };
 });
