@@ -10,7 +10,7 @@
 
     <div id="mocha"></div>
 
-    <div youtube-upload onUploadComplete="lol"></div>
+    <div youtube-upload></div>
 
     <script src="mocha.js"></script>
     <script>mocha.setup('bdd')</script>
@@ -24,9 +24,6 @@
     <script>
         if (navigator.userAgent.indexOf('PhantomJS') < 0) {
             mocha.run();
-        }
-        function lol() {
-            console.log('lol');
         }
     </script>
   </body>
