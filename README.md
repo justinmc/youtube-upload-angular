@@ -15,6 +15,20 @@ An Angular wrapper on the [YouTube Upload Widget](https://developers.google.com/
 
         <div youtube-upload></div>
 
+## Parameters
+
+### on-upload-success
+
+This parameter expects a function to call after the video has finished uploading.  If none given, then it uses the [default onUploadSuccess function given by YouTube](https://developers.google.com/youtube/youtube_upload_widget).
+
+    <div youtube-upload on-upload-success="myUploadCallback()"></div>
+
+### on-processing-complete
+
+This parameter expects a function to call last - after the video has been uploaded, finished processing, and is available on YouTube.  If none given, then it uses the [default onProcessingComplete function given by YouTube](https://developers.google.com/youtube/youtube_upload_widget).
+
+    <div youtube-upload on-processing-complete="myProcessingCallback()"></div>
+
 ## Build from a fresh clone
 
     npm install

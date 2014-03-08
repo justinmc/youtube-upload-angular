@@ -9,8 +9,8 @@ angular.module('youtubeUpload', []).directive('youtubeUpload', function() {
         templateUrl: '../dist/youtube_upload.html',
         replace: true,
         scope: {
-            onUploadSuccess: '@',
-            onProcessingComplete: '@'
+            onUploadSuccess: '@',       // override upload callback
+            onProcessingComplete: '@'   // override final callback
         },
 
         link: function($scope, $element, $attrs) {
