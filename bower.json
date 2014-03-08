@@ -1,0 +1,27 @@
+{
+  "name": "youtube-upload-angular",
+  "version": "0.1.0",
+  "homepage": "https://github.com/localmotors/youtube-upload-angular",
+  "authors": [
+    "Local Motors"
+  ],
+  "description": "An Angular wrapper on the YouTube Upload Widget",
+  "main": "app/youtube_upload.js",
+  "keywords": [
+    "Angular",
+    "YouTube",
+    "Upload",
+    "Widget",
+    "YouTube",
+    "Upload"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
