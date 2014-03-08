@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
 
 var bases = {
@@ -26,6 +27,7 @@ gulp.task('scripts', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(uglify())
+        .pipe(concat('youtube_upload.min.js'))
         .pipe(gulp.dest(bases.dist));
 });
 
