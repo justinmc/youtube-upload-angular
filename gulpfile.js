@@ -2,6 +2,7 @@ var gulp = require('gulp');
 
 var clean = require('gulp-clean');
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 
 var bases = {
     app: 'app/',
@@ -30,6 +31,12 @@ gulp.task('copy', function() {
     // copy html
     gulp.src(paths.html)
         .pipe(gulp.dest(bases.dist));
+});
+
+// Run the tests
+gulp.task('test', function() {
+    gulp.src('test/tests.js')
+        .pipe(mocha({reporter: 'nyan'}));
 });
 
 gulp.task('default', ['clean', 'scripts', 'copy']);

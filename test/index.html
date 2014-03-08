@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="youtubeUpload">
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mocha.css" />
+  </head>
+  <body>
+
+    <div id="mocha"></div>
+
+    <div youtube-upload></div>
+
+    <script src="mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="../bower_components/chai/chai.js"></script>
+    <script src="../dist/youtube_upload.js"></script>
+
+    <script src="tests.js"></script>
+    <script>
+        if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+            mocha.run();
+        }
+    </script>
+  </body>
+</html>

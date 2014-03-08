@@ -1,14 +1,12 @@
-var App = angular.module('localmotors');
-
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Youtube Upload Directive -
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-App.directive('youtubeUpload', function($rootScope, $location, $timeout, Idea, $templateCache) {
+angular.module('youtubeUpload', []).directive('youtubeUpload', function() {
 	'use strict';
 
     return {
-        restrict: 'A',
-        templateUrl: '/static/partials/youtube_upload.html',
+        restrict: 'AE',
+        templateUrl: '../dist/youtube_upload.html',
         replace: true,
         scope: {
         },
